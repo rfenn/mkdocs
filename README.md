@@ -46,3 +46,28 @@ The default action is to serve your documentation on port 8000.
 - Change the port by exporting `PORT=9999` or similar
 - `build` will build static html pages in the `site` directory
 - `--help` will show a few other options
+
+### Serve your docs with [Nginx](https://hub.docker.com/_/nginx)
+
+Copy this to `Dockerfile` in to the top level directory (above `docs`):
+
+```
+FROM rfenn/mkdocs as mkdocs
+COPY * /workdir
+RUN mkdocs build
+
+FROM nginx
+COPY --from=mkdocs /workdir/site /usr/share/nginx/html
+```
+
+Build your Nginx image:
+
+```shell
+$ docker image build -t me/mydocs .
+```
+
+And run it:
+
+```shell
+$ docker container run --rm -d --name mydocs -p 8888:80 me/mydocs
+```
