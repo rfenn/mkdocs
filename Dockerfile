@@ -2,7 +2,8 @@ FROM python:3-alpine3.9
 
 RUN pip install \
     mkdocs \
-    mkdocs-material
+    mkdocs-material \
+    mkdocs-mermaid-plugin
 
 WORKDIR /workdir
 ENTRYPOINT [ "mkdocs" ]
