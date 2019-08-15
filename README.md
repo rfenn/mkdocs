@@ -28,9 +28,6 @@ markdown_extensions:
   - admonition
   - footnotes
   - tables
-  - markdownmermaid
-extra_javascript:
-  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
 ```
 
 ### Example shell script to call mkdocs
