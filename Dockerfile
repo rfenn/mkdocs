@@ -1,9 +1,12 @@
 FROM python:3-alpine3.9
 
-RUN pip install \
-    mkdocs \
-    mkdocs-material \
-    mkdocs-mermaid-plugin
+RUN apk add --update git \
+    && rm -rf /var/cache/apk/* \
+    && pip install \
+       mkdocs \
+       mkdocs-material \
+       beautifulsoup4 \
+       git+https://github.com/pugong/mkdocs-mermaid-plugin.git
 
 WORKDIR /workdir
 ENTRYPOINT [ "mkdocs" ]

@@ -30,7 +30,7 @@ markdown_extensions:
   - tables
   - markdownmermaid
 extra_javascript:
-  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
+  - https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js
 ```
 
 ### Example shell script to call mkdocs
