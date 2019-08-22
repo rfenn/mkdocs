@@ -8,6 +8,6 @@ RUN apk add --update git \
        beautifulsoup4 \
        git+https://github.com/pugong/mkdocs-mermaid-plugin.git
 
-WORKDIR /workdir
+WORKDIR /app
 ENTRYPOINT [ "mkdocs" ]
 CMD ["serve", "-a", "0.0.0.0:8000"]
