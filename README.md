@@ -9,6 +9,15 @@ Simple image with [MkDocs](https://www.mkdocs.org). MkDocs give your project
 
 ## Using this image
 
+### Quick Start
+
+If your project is already configured, simply run:
+
+```shell
+docker container run --rm -p 8000:8000 -v $(pwd):/app rfenn/mkdocs
+```
+And point your browser to [http://localhost:8000/](http://localhost:8000)
+
 ### Prepare your docs
 
 1) Your site should have a `docs` directory, with Markdown files
