@@ -41,7 +41,9 @@ plugins:
   - markdownmermaid
   - search
 extra_javascript:
-  - https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js
+  - https://unpkg.com/mermaid@8.4/dist/mermaid.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css
 ```
 
 ### Example shell script to call mkdocs
