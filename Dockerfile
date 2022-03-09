@@ -1,13 +1,17 @@
-FROM python:3.8-alpine3.10
+FROM python:3.9-slim AS python
 
-RUN apk add --no-cache git \
-    && rm -rf /var/cache/apk/* \
+FROM python as build_stage
+RUN apt update \
+    && apt install --no-install-recommends -y gcc \
     && pip install \
-       mkdocs==1.0.4 \
-       mkdocs-material==4.6.0 \
-       beautifulsoup4==4.8.1 \
-       git+https://github.com/pugong/mkdocs-mermaid-plugin.git
+       mkdocs==1.1.2 \
+       mkdocs-material==7.1.6 \
+       beautifulsoup4==4.9.3 \
+       mkdocs-mermaid-plugin 
 
+FROM python as runtime_stage
+COPY --from=build_stage /usr/local/lib/python3.9/site-packages/ /usr/local/lib/python3.9/site-packages/
+COPY --from=build_stage /usr/local/bin/ /usr/local/bin/
 WORKDIR /app
 ENTRYPOINT [ "mkdocs" ]
 CMD ["serve", "-a", "0.0.0.0:8000"]
