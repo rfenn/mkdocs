@@ -16,6 +16,7 @@ If your project is already configured, simply run:
 ```shell
 docker container run --rm -p 8000:8000 -v $(pwd):/app rfenn/mkdocs
 ```
+
 And point your browser to [http://localhost:8000/](http://localhost:8000)
 
 ### Prepare your docs
@@ -38,7 +39,7 @@ markdown_extensions:
   - footnotes
   - tables
 plugins:
-  - markdownmermaid
+  - mermaid2
   - search
 extra_javascript:
   - https://unpkg.com/mermaid@8.4/dist/mermaid.min.js
@@ -71,7 +72,7 @@ In this example, we build the docs as html, then put them into an Nginx image.
 
 Example `Dockerfile` (in to the top level directory,  above `docs`):
 
-```
+```Dockerfile
 FROM rfenn/mkdocs as mkdocs
 COPY * /app
 RUN mkdocs build
@@ -130,3 +131,9 @@ Now run as:
 ```shell
 docker mkdocs
 ```
+
+## Changelog
+
+### 2022-03-10 Breaking Change
+
+Updated to `mkdocs-mermaid2-plugin`, which now requires you to load the `mermaid2` plugin. For compatibility with the older `markdownmermaid` plugin, this image is also available as `rfenn/mkdocs:markdownmermaid`.
